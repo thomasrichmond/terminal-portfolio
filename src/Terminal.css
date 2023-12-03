@@ -44,8 +44,9 @@ p {
 
   & p {
     color: rgb(29, 200, 230);
-    text-wrap: nowrap;
     margin: 8px 0 8px 0;
+    white-space: nowrap;
+    width: auto;
   }
 
   & input {
