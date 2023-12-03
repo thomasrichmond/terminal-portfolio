@@ -5,12 +5,18 @@
   right: 0;
   bottom: 0;
   position: absolute;
-  width: 70%;
-  height: 60%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
   background-color: #1f1f1f;
+  border-radius: 0;
+
+  @media screen and (min-width: 768px) {
+    border-radius: 12px;
+    width: 70%;
+    height: 60%;
+  }
 }
 
 .-centered {
@@ -63,11 +69,15 @@ p {
 
 .terminal__toolbar {
   align-items: center;
-  display: flex;
+  display: none;
   min-height: 30px;
   justify-content: center;
   background-color: #e9eaed;
   border-radius: 12px 12px 0 0;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 
   &:hover {
     cursor: pointer;
