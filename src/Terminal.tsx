@@ -11,7 +11,7 @@ function Terminal(this: any) {
 
   const [inputResult, setInputResult] = useState<string>();
   const [terminalHistory, setTerminalHistory] = useState<any[]>([]);
-  const [terminalLocation, setTerminalLocation] = useState<string>(
+  const [terminalLocation] = useState<string>(
     "Thomas Richmond:~/terminal-portfolio"
   );
   const [isCentered, setIsCentered] = useState<boolean>(true);
