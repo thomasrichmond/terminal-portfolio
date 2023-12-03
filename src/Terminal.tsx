@@ -85,7 +85,7 @@ function Terminal(this: any) {
 
       case "cv":
         window.open(
-          "../src/assets/Thomas Richmond December 2023.pdf",
+          "../public/assets/Thomas Richmond December 2023.pdf",
           "_blank"
         );
         break;
@@ -176,19 +176,19 @@ function Terminal(this: any) {
         <div className="terminal__toolbar">
           <div className="toolbar__buttons">
             <button className="close__terminal">
-              <img src="../src/assets/cross.svg" />
+              <img src="../public/assets/cross.svg" />
             </button>
             <button className="minimise__terminal">
-              <img src="../src/assets/minus.svg" />
+              <img src="../public/assets/minus.svg" />
             </button>
             <button className="maximise__terminal">
-              <img src="../src/assets/square.svg" />
+              <img src="../public/assets/square.svg" />
             </button>
           </div>
           <>
             <img
               className="home__icon"
-              src="../src/assets/mac-home-directory.jpeg"></img>
+              src="../public/assets/mac-home-directory.jpeg"></img>
             <h1>{terminalLocationHeading}</h1>
           </>
         </div>
