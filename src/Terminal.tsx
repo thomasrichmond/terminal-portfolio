@@ -26,6 +26,15 @@ function Terminal(this: any) {
     document.getElementById("text-input")!.focus();
   }, []);
 
+  const notFoundMarkup = (
+    <div className="not__found">
+      <p>{inputResult}: command not found.</p>
+      <p>
+        Type <span>'help'</span> to see available commands
+      </p>
+    </div>
+  );
+
   const displayOptions = () => {
     switch (inputResult) {
       case "help":
@@ -45,16 +54,10 @@ function Terminal(this: any) {
               <span>cv</span>: download my cv
             </li>
             <li>
-              <span>personal projects</span>: my personal projects
+              <span>personal-projects</span>: my personal projects
             </li>
             <li>
               <span>skills</span>: my professional skills
-            </li>
-            <li>
-              <span>interests</span>: my interests
-            </li>
-            <li>
-              <span>experience</span>: my professional experience
             </li>
             <li>
               <span>contact</span>: lets connect
@@ -63,7 +66,7 @@ function Terminal(this: any) {
               <span>clear</span>: clear the terminal
             </li>
             <li>
-              <span>cd .. </span>: navigate to previous directory
+              <span>cd .. </span>: navigate to parent directory
             </li>
           </ul>
         );
@@ -72,8 +75,50 @@ function Terminal(this: any) {
         setTerminalPath("");
         break;
 
+      case "ls":
+        if (terminalPath === "help" || terminalPath === "") {
+          return (
+            <table className="ls__table">
+              <td>
+                <tr>help</tr>
+                <tr>about-me</tr>
+                <tr>linkedin</tr>
+                <tr>github</tr>
+                <tr>cv</tr>
+                <tr>personal-projects</tr>
+              </td>
+              <td>
+                <tr>skills</tr>
+                <tr>contact</tr>
+                <tr>clear</tr>
+                <tr>cd ..</tr>
+                <tr>show-me[0]</tr>
+                <tr>show-me[1]</tr>
+              </td>
+            </table>
+          );
+        } else {
+          return notFoundMarkup;
+        }
+
       case "about-me":
-        return <p>about me</p>;
+        setTerminalPath("about-me");
+        return (
+          <p>
+            Hello 👋 I'm Tom! I am a software developer, based on the east coast
+            of Australia. I am a computer science graduate who majored in
+            software engineering and have been building websites and digital
+            experiences for the last 2 years. I am currently working at Deloitte
+            Digital, as a frontend software engineer, and in my time here have
+            delivered a number of greenfield and legacy uplift projects,
+            primarily using Next.js, Typescript, React and Vercel. Outside of
+            work, I absolutely love football ⚽, listening to music 📻 and
+            keeping up to date with the wonderful world of tech 💻. I love to
+            tinker in my own time, and spend my spare time learning new ways to
+            become a better engineer, through creating projects like this
+            terminal portfolio you are looking at now.{" "}
+          </p>
+        );
 
       case "linkedin":
         window.open("https://www.linkedin.com/in/t-ri/", "_blank");
@@ -87,16 +132,105 @@ function Terminal(this: any) {
         window.open("../cv.pdf", "_blank");
         break;
 
+      case "personal-projects":
+        setTerminalPath("personal-projects");
+        return (
+          <ol className="result__list">
+            <ul>
+              <li>
+                {"{"}
+                <ul>
+                  <li>"Index" : "0"</li>
+                  <li>"Name" : "FreshBeerNearMe"</li>
+                  <li>"Stack" : "MERN - React Native"</li>
+                  <li>
+                    "Description" : "Mobile app which displays what beer is on
+                    tap at a pub, and how fresh the beer is, using IoT
+                    technology"
+                  </li>
+                  <li>
+                    "Link" : "
+                    <a
+                      href="https://www.youtube.com/watch?v=BI6ZvcNYbB4"
+                      target="_blank">
+                      Marketing Video
+                    </a>
+                    "
+                  </li>
+                </ul>
+                {"}"},
+              </li>
+
+              <li>
+                {"{"}
+                <ul>
+                  <li>"Index" : "1"</li>
+                  <li>"Name" : "Terminal Portfolio"</li>
+                  <li>"Stack" : "React, TS, Vercel"</li>
+                  <li>
+                    "Description" : "My personal portfolio in the format of a
+                    command line terminal."
+                  </li>
+                  <li>
+                    "Link" : "
+                    <a
+                      href="https://github.com/thomasrichmond/terminal-portfolio"
+                      target="_blank">
+                      Github
+                    </a>
+                    "
+                  </li>
+                </ul>
+                {"}"}
+              </li>
+            </ul>
+            <p className="show__index">
+              To see the project, type <span>show-me[index]</span>
+            </p>
+          </ol>
+        );
+
+      case "show-me[0]":
+        window.open("https://www.youtube.com/watch?v=BI6ZvcNYbB4", "_blank");
+        break;
+
+      case "show-me[1]":
+        window.open(
+          "https://github.com/thomasrichmond/terminal-portfolio",
+          "_blank"
+        );
+        break;
+
+      case "skills":
+        setTerminalPath("skills");
+        return (
+          <ol className="result__list">
+            <ul>
+              <li>
+                {"{"}
+                <ul>
+                  <li>"Typescript" : "⭐⭐⭐⭐"</li>
+                  <li>"React" : "⭐⭐⭐⭐"</li>
+                  <li>"NextJS" : "⭐⭐⭐"</li>
+                  <li>"React Native" : "⭐⭐⭐"</li>
+                  <li>"GraphQL" : "⭐⭐⭐"</li>
+                  <li>"API's / Axios" : "⭐⭐⭐"</li>
+                  <li>"Vercel / Deployments" : "⭐⭐⭐"</li>
+                  <li>"Git" : "⭐⭐⭐⭐"</li>
+                </ul>
+                {"}"}
+              </li>
+            </ul>
+          </ol>
+        );
+
+      case "contact":
+        window.open("mailto:tomrichmond.dev@gmail.com", "_blank");
+        break;
+
       default:
         setTerminalPath("");
-        return (
-          <div className="not__found">
-            <p>{inputResult}: command not found.</p>
-            <p>
-              Type <span>'help'</span> to see available commands
-            </p>
-          </div>
-        );
+        return notFoundMarkup;
     }
   };
 
