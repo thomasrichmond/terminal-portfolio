@@ -1,5 +1,11 @@
+@font-face {
+  font-family: "JetBrainsMono";
+  src: url("../JetBrainsMono-Bold.ttf");
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: JetBrainsMono, sans-serif;
   line-height: 1.2;
   font-weight: 700;
   background: linear-gradient(to right, #f27121, #e94057, #8a2387);
