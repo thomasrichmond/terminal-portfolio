@@ -15,8 +15,13 @@
   @media screen and (min-width: 768px) {
     border-radius: 12px;
     width: 70%;
-    height: 60%;
+    height: 70%;
   }
+}
+
+p {
+  color: #fff;
+  line-height: 1.5;
 }
 
 .-centered {
@@ -56,6 +61,7 @@ p {
   }
 
   & input {
+    font-family: JetBrainsMono, sans-serif;
     background-color: transparent;
     border: none;
     width: 100%;
@@ -174,7 +180,23 @@ p {
   color: white;
   line-height: 1.5;
 
-  & span {
+  & span,
+  & a {
     color: #b68ed9;
   }
+
+  & ul,
+  & li {
+    list-style-type: none;
+  }
+}
+
+.show__index {
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.ls__table {
+  border-spacing: 8px;
+  color: #fff;
 }
