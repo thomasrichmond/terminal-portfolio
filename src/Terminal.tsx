@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { useState } from 'react'
@@ -38,6 +39,7 @@ function Terminal(this: any) {
   const displayOptions = () => {
     switch (inputResult) {
       case "help":
+      case "cd help":
         setTerminalPath("help");
         return (
           <ul className="result__list">
@@ -102,6 +104,7 @@ function Terminal(this: any) {
         }
 
       case "about-me":
+      case "cd about-me":
         setTerminalPath("about-me");
         return (
           <p>
@@ -133,6 +136,7 @@ function Terminal(this: any) {
         break;
 
       case "personal-projects":
+      case "cd personal-projects":
         setTerminalPath("personal-projects");
         return (
           <ol className="result__list">
@@ -202,6 +206,7 @@ function Terminal(this: any) {
         break;
 
       case "skills":
+      case "cd skills":
         setTerminalPath("skills");
         return (
           <ol className="result__list">
