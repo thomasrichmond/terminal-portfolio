@@ -1,15 +1,8 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// import { useState } from 'react'
-
 import { useEffect, useState } from "react";
 import "./Terminal.css";
 import Draggable from "react-draggable";
 
-function Terminal(this: any) {
-  // const [count, setCount] = useState(0);
-
+export const Terminal = () => {
   const [inputResult, setInputResult] = useState<string>();
   const [terminalHistory, setTerminalHistory] = useState<any[]>([]);
   const [terminalLocation] = useState<string>(
@@ -355,6 +348,6 @@ function Terminal(this: any) {
       </div>
     </Draggable>
   );
-}
+};
 
 export default Terminal;
