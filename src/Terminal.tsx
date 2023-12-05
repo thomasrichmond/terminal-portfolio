@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import "./Terminal.css";
 import Draggable from "react-draggable";
 
 export const Terminal = () => {
+  // * Variable initialisation
   const [inputResult, setInputResult] = useState<string>();
   const [terminalHistory, setTerminalHistory] = useState<any[]>([]);
   const [terminalLocation] = useState<string>(
@@ -16,10 +18,12 @@ export const Terminal = () => {
     ? `${terminalLocation}/${terminalPath}$`
     : `${terminalLocation}$`;
 
+  //* Focus input on load
   useEffect(() => {
     document.getElementById("text-input")!.focus();
   }, []);
 
+  //* Reusable not cmd not found markup
   const notFoundMarkup = (
     <div className="not__found">
       <p>{inputResult}: command not found.</p>
@@ -245,16 +249,18 @@ export const Terminal = () => {
       </div>
     );
 
-    setTerminalHistory((previousHistory) => [
+    setTerminalHistory((previousHistory: any) => [
       ...previousHistory,
       terminalResult,
     ]);
   };
 
+  //* Map & render results
   const renderResults = terminalHistory.map((terminalItem, terminalIndex) => {
     return <div key={`terminal-result-${terminalIndex}`}>{terminalItem}</div>;
   });
 
+  //* Key up & down evt to center draggable window
   const centerContainerKeyUp = (event: any) => {
     if (event.key === "Control") {
       ctrlClicked = false;
