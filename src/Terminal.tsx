@@ -90,7 +90,6 @@ export const Terminal = () => {
                 <tr>skills</tr>
                 <tr>contact</tr>
                 <tr>clear</tr>
-                <tr>cd ..</tr>
                 <tr>show-me[0]</tr>
                 <tr>show-me[1]</tr>
               </td>
