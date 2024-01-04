@@ -18,6 +18,16 @@ export const Terminal = () => {
     ? `${terminalLocation}/${terminalPath}$`
     : `${terminalLocation}$`;
 
+  const introText = (
+    <p className="introduction__text">
+      Hello! Welcome to my portfolio terminal! All of my details can be accessed
+      using classic terminal commands. Begin by typing <span>help</span> to see
+      a list of the available commands
+    </p>
+  );
+
+  const [introductionText, setIntroductionText] = useState<any>(introText);
+
   //* Focus input on load
   useEffect(() => {
     document.getElementById("text-input")!.focus();
@@ -141,7 +151,7 @@ export const Terminal = () => {
                 {"{"}
                 <ul>
                   <li>"Index" : "0"</li>
-                  <li>"Name" : "FreshBeerNearMe"</li>
+                  <li>"Name" : "Fresh Beer Near Me"</li>
                   <li>"Stack" : "MERN - React Native"</li>
                   <li>
                     "Description" : "Mobile app which displays what beer is on
@@ -300,9 +310,6 @@ export const Terminal = () => {
       defaultPosition={{ x: 0, y: 0 }}
       grid={[0.5, 0.5]}
       scale={1}
-      onMouseDown={(event) => {
-        console.log(event);
-      }}
       onDrag={() => {
         setIsCentered(false);
       }}>
@@ -333,9 +340,11 @@ export const Terminal = () => {
               type="text"
               value={inputResult}
               onKeyDown={(event) => {
+                console.log(event.key);
                 if (event.key === "Enter" && inputResult) {
                   if (inputResult === "clear") {
                     setTerminalHistory([]);
+                    setIntroductionText("");
                     setInputResult("");
                   } else {
                     addTerminalItem(`${terminalLocation}$`, inputResult!);
@@ -349,6 +358,7 @@ export const Terminal = () => {
             />
           </div>
           <div className="terminal__history">{renderResults}</div>
+          {introductionText && introductionText}
         </div>
       </div>
     </Draggable>

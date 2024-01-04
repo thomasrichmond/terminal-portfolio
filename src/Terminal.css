@@ -28,11 +28,11 @@ p {
   transform: translate(0, 0) !important;
 }
 
-.not__found {
-  & span {
-    color: #b68ed9;
-  }
+span {
+  color: #b68ed9;
+}
 
+.not__found {
   & p {
     color: white;
   }
@@ -165,9 +165,6 @@ p {
   gap: 6px;
   align-items: center;
 
-  & span {
-    color: white;
-  }
   & p {
     color: rgb(29, 200, 230);
     margin: 8px 0 8px 0;
@@ -180,7 +177,6 @@ p {
   color: white;
   line-height: 1.5;
 
-  & span,
   & a {
     color: #b68ed9;
   }
@@ -199,4 +195,8 @@ p {
 .ls__table {
   border-spacing: 8px;
   color: #fff;
+}
+
+.introduction__text {
+  margin: 8px 0;
 }
