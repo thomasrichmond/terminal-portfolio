@@ -17,15 +17,15 @@ export const Terminal = () => {
   const terminalLocationHeading = terminalPath
     ? `${terminalLocation}/${terminalPath}$`
     : `${terminalLocation}$`;
-
+  const [previousResults, setPreviousResults] = useState<string[]>([]);
+  const [focusIndex, setFocusIndex] = useState(0);
   const introText = (
     <p className="introduction__text">
-      Hello! Welcome to my portfolio terminal! All of my details can be accessed
-      using classic terminal commands. Begin by typing <span>help</span> to see
-      a list of the available commands
+      Hello I'm Tom! Welcome to my portfolio terminal! All of my details can be
+      accessed using classic terminal commands. Begin by typing{" "}
+      <span>help</span> to see a list of the available commands
     </p>
   );
-
   const [introductionText, setIntroductionText] = useState<any>(introText);
 
   //* Focus input on load
@@ -303,6 +303,69 @@ export const Terminal = () => {
     };
   }, []);
 
+  // * Cursor position util function
+  const setCursorPosition = (
+    inputElement: HTMLInputElement,
+    inputLength: number
+  ) => {
+    if (inputElement.setSelectionRange) {
+      inputElement.focus();
+      inputElement.setSelectionRange(inputLength, inputLength);
+    }
+  };
+
+  const setKeydownEvent = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+
+      if (focusIndex < previousResults.length) setFocusIndex(focusIndex + 1);
+
+      const currentInput =
+        previousResults[previousResults.length - (focusIndex + 1)];
+
+      const inputElement = document.getElementById(
+        "text-input"
+      ) as HTMLInputElement;
+
+      setInputResult(currentInput);
+      setCursorPosition(inputElement, currentInput.length);
+    }
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (focusIndex <= previousResults.length && focusIndex > 1)
+        setFocusIndex(focusIndex - 1);
+
+      const inputElement = document.getElementById(
+        "text-input"
+      ) as HTMLInputElement;
+
+      const currentInput =
+        previousResults[previousResults.length - (focusIndex - 1)];
+      setInputResult(currentInput);
+      setCursorPosition(inputElement, currentInput.length);
+    }
+
+    if (event.key === "Enter" && inputResult) {
+      event.preventDefault();
+      if (inputResult === "clear") {
+        setTerminalHistory([]);
+        setIntroductionText("");
+        !previousResults.includes(inputResult)
+          ? setPreviousResults([...previousResults, inputResult])
+          : null;
+        setInputResult("");
+      } else {
+        addTerminalItem(`${terminalLocation}$`, inputResult!);
+        !previousResults.includes(inputResult)
+          ? setPreviousResults([...previousResults, inputResult])
+          : null;
+        setInputResult("");
+        setFocusIndex(0);
+      }
+    }
+  };
+
   return (
     <Draggable
       axis="both"
@@ -340,17 +403,7 @@ export const Terminal = () => {
               type="text"
               value={inputResult}
               onKeyDown={(event) => {
-                console.log(event.key);
-                if (event.key === "Enter" && inputResult) {
-                  if (inputResult === "clear") {
-                    setTerminalHistory([]);
-                    setIntroductionText("");
-                    setInputResult("");
-                  } else {
-                    addTerminalItem(`${terminalLocation}$`, inputResult!);
-                    setInputResult("");
-                  }
-                }
+                setKeydownEvent(event);
               }}
               onChange={(event) => {
                 setInputResult(event.target.value);
