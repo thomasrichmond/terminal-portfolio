@@ -33,7 +33,7 @@ export const Terminal = () => {
     document.getElementById("text-input")!.focus();
   }, []);
 
-  //* Reusable not cmd not found markup
+  //* Reusable cmd not found markup
   const notFoundMarkup = (
     <div className="not__found">
       <p>{inputResult}: command not found.</p>
