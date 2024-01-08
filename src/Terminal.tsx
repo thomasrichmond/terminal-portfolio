@@ -314,6 +314,7 @@ export const Terminal = () => {
     }
   };
 
+  //* Keydown function for user input
   const setKeydownEvent = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "ArrowUp") {
       event.preventDefault();
