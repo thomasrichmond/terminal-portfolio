@@ -5,5 +5,5 @@ This project is designed to showcase my cv and portfolio through the form of a t
 Take a look [Here](https://tomrichmond.dev)
 
 Contact me: 
-m. 0411511318
+m. 0411511318 🇦🇺  / 07537141569 🇬🇧
 e. tomrichmond.dev@gmail.com
