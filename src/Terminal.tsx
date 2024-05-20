@@ -369,6 +369,7 @@ export const Terminal = () => {
 
   return (
     <Draggable
+      defaultClassName="draggabble__container"
       axis="both"
       handle=".terminal__toolbar"
       defaultPosition={{ x: 0, y: 0 }}

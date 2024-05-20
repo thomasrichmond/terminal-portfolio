@@ -200,3 +200,9 @@ p {
 .introduction__text {
   margin: 8px 0;
 }
+
+@media screen and (max-width: 768px) {
+  .draggabble__container {
+    transform: none !important;
+  }
+}
