@@ -392,7 +392,7 @@ export const Terminal = () => {
           </div>
           <>
             <img className="home__icon" src="../mac-home-directory.jpeg"></img>
-            <h1>{terminalLocationHeading}</h1>
+            <h1>{terminalLocation}</h1>
           </>
         </div>
 
