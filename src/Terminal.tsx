@@ -11,8 +11,8 @@ export const Terminal = () => {
     "Thomas Richmond:~/terminal-portfolio"
   );
   const [isCentered, setIsCentered] = useState<boolean>(true);
-  let ctrlClicked = false;
-  let pClicked = false;
+  const ctrlClicked = false;
+  const pClicked = false;
   const [terminalPath, setTerminalPath] = useState<string>("");
   const terminalLocationHeading = terminalPath
     ? `${terminalLocation}/${terminalPath}$`
@@ -269,39 +269,39 @@ export const Terminal = () => {
     return <div key={`terminal-result-${terminalIndex}`}>{terminalItem}</div>;
   });
 
-  //* Key up & down evt to center draggable window
-  const centerContainerKeyUp = (event: any) => {
-    if (event.key === "Control") {
-      ctrlClicked = false;
-    }
+  // //* Key up & down evt to center draggable window
+  // const centerContainerKeyUp = (event: any) => {
+  //   if (event.key === "Control") {
+  //     ctrlClicked = false;
+  //   }
 
-    if (event.key === "p") {
-      pClicked = false;
-    }
-  };
+  //   if (event.key === "p") {
+  //     pClicked = false;
+  //   }
+  // };
 
-  const centerContainerKeyDown = (event: any) => {
-    if (event.key === "Control") {
-      ctrlClicked = true;
-    }
+  // const centerContainerKeyDown = (event: any) => {
+  //   if (event.key === "Control") {
+  //     ctrlClicked = true;
+  //   }
 
-    if (event.key === "p") {
-      pClicked = true;
-    }
+  //   if (event.key === "p") {
+  //     pClicked = true;
+  //   }
 
-    if (ctrlClicked && pClicked) {
-      setIsCentered(true);
-    }
-  };
+  //   if (ctrlClicked && pClicked) {
+  //     setIsCentered(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    document.addEventListener("keydown", centerContainerKeyDown);
-    document.addEventListener("keyup", centerContainerKeyUp);
-    return () => {
-      document.removeEventListener("keydown", centerContainerKeyDown);
-      document.addEventListener("keyup", centerContainerKeyUp);
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener("keydown", centerContainerKeyDown);
+  //   document.addEventListener("keyup", centerContainerKeyUp);
+  //   return () => {
+  //     document.removeEventListener("keydown", centerContainerKeyDown);
+  //     document.addEventListener("keyup", centerContainerKeyUp);
+  //   };
+  // }, [ ]);
 
   // * Cursor position util function
   const setCursorPosition = (
@@ -319,23 +319,50 @@ export const Terminal = () => {
     if (event.key === "ArrowUp") {
       event.preventDefault();
 
-      if (focusIndex < previousResults.length) setFocusIndex(focusIndex + 1);
+      if (previousResults.length === 0) {
+        return;
+      }
 
-      const currentInput =
-        previousResults[previousResults.length - (focusIndex + 1)];
+      if (focusIndex <= previousResults.length) {
+        setFocusIndex(focusIndex + 1);
+      }
 
       const inputElement = document.getElementById(
         "text-input"
       ) as HTMLInputElement;
 
-      setInputResult(currentInput);
-      setCursorPosition(inputElement, currentInput.length);
+      console.log(
+        "focus index",
+        focusIndex,
+        "prev len",
+        previousResults.length
+      );
+      console.log("current input", previousResults.length - (focusIndex + 1));
+
+      const currentInput =
+        previousResults[previousResults.length - (focusIndex + 1)];
+
+      console.log(currentInput, Number(currentInput) < 0);
+      const test = Number(currentInput) < 0 ? "0" : currentInput;
+
+      // console.log("current on arrowup ", currentInput);
+      console.log("test on arrowup ", inputElement, test);
+
+      // setInputResult(currentInput);
+      // setCursorPosition(inputElement, currentInput.length);
     }
 
     if (event.key === "ArrowDown") {
       event.preventDefault();
-      if (focusIndex <= previousResults.length && focusIndex > 1)
+      if (previousResults.length === 0) {
+        return;
+      }
+
+      console.log(focusIndex, previousResults.length, previousResults);
+
+      if (focusIndex <= previousResults.length && focusIndex > 1) {
         setFocusIndex(focusIndex - 1);
+      }
 
       const inputElement = document.getElementById(
         "text-input"
@@ -343,6 +370,8 @@ export const Terminal = () => {
 
       const currentInput =
         previousResults[previousResults.length - (focusIndex - 1)];
+
+      console.log("current on arrowdown ", currentInput);
       setInputResult(currentInput);
       setCursorPosition(inputElement, currentInput.length);
     }
@@ -366,6 +395,8 @@ export const Terminal = () => {
       }
     }
   };
+
+  console.log(focusIndex);
 
   return (
     <Draggable
