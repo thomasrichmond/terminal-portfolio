@@ -117,13 +117,13 @@ export const Terminal = () => {
             graduate who majored in software engineering and have been building
             websites and digital experiences for the last 3.5 years. I am
             currently working at AlphaLoops, as a Founding Engineer, and am
-            responsible for building our product end-to-end from MVP to 30+
-            corporate clients. Outside of work, I absolutely love football ⚽,
-            listening to music 📻 and keeping up to date with the wonderful
-            world of tech 💻. I love to tinker in my own time, and spend my
-            spare time learning new ways to become a better engineer, through
-            creating projects like this terminal portfolio you are looking at
-            now.{" "}
+            responsible for building our product end-to-end, taking it from MVP
+            to 30+ corporate clients. Outside of work, I absolutely love
+            football ⚽, listening to music 📻 and keeping up to date with the
+            wonderful world of tech 💻. I love to tinker in my own time, and
+            spend my spare time learning new ways to become a better engineer,
+            through creating projects like this terminal portfolio you are
+            looking at now.{" "}
           </p>
         );
 
