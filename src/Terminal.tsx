@@ -112,18 +112,18 @@ export const Terminal = () => {
         setTerminalPath("about-me");
         return (
           <p>
-            Hello 👋 I'm Tom! I am a software developer, based on the east coast
-            of Australia. I am a computer science graduate who majored in
-            software engineering and have been building websites and digital
-            experiences for the last 2 years. I am currently working at Deloitte
-            Digital, as a frontend software engineer, and in my time here have
-            delivered a number of greenfield and legacy uplift projects,
-            primarily using Next.js, Typescript, React and Vercel. Outside of
-            work, I absolutely love football ⚽, listening to music 📻 and
-            keeping up to date with the wonderful world of tech 💻. I love to
-            tinker in my own time, and spend my spare time learning new ways to
-            become a better engineer, through creating projects like this
-            terminal portfolio you are looking at now.{" "}
+            Hello 👋 I'm Tom! I am a software engineer from the east coast of
+            Australia, who is currently based in London. I am a computer science
+            graduate who majored in software engineering and have been building
+            websites and digital experiences for the last 3.5 years. I am
+            currently working at AlphaLoops, as a Founding Engineer, and am
+            responsible for building our product end-to-end from MVP to 30+
+            corporate clients. Outside of work, I absolutely love football ⚽,
+            listening to music 📻 and keeping up to date with the wonderful
+            world of tech 💻. I love to tinker in my own time, and spend my
+            spare time learning new ways to become a better engineer, through
+            creating projects like this terminal portfolio you are looking at
+            now.{" "}
           </p>
         );
 
@@ -218,14 +218,15 @@ export const Terminal = () => {
               <li>
                 {"{"}
                 <ul>
-                  <li>"Typescript" : "⭐⭐⭐⭐"</li>
-                  <li>"React" : "⭐⭐⭐⭐"</li>
-                  <li>"NextJS" : "⭐⭐⭐"</li>
-                  <li>"React Native" : "⭐⭐⭐"</li>
-                  <li>"GraphQL" : "⭐⭐⭐"</li>
+                  <li>"Typescript" : "⭐⭐⭐⭐⭐"</li>
+                  <li>"React" : "⭐⭐⭐⭐⭐"</li>
+                  <li>"NextJS" : "⭐⭐⭐⭐"</li>
+                  <li>"FastAPI" : "⭐⭐⭐"</li>
+                  <li>"Python" : "⭐⭐⭐"</li>
                   <li>"API's / Axios" : "⭐⭐⭐"</li>
                   <li>"Vercel / Deployments" : "⭐⭐⭐"</li>
                   <li>"Git" : "⭐⭐⭐⭐"</li>
+                  <li>"React Query" : "⭐⭐⭐"</li>
                 </ul>
                 {"}"}
               </li>
